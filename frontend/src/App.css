@@ -1,0 +1,272 @@
+
+/* Global Layout */
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #dbeafe, #eff6ff, #e0e7ff);
+  font-family: Arial, sans-serif;
+}
+
+/* Weather Card */
+.weather-container {
+  width: 100%;
+  max-width: 450px;
+  padding: 32px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+
+/* Application Heading */
+.app-title {
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: #1e3a8a;
+  font-size: 32px;
+}
+
+.app-description {
+  margin-top: 0;
+  margin-bottom: 28px;
+  color: #64748b;
+  font-size: 15px;
+}
+
+
+/* Search Section */
+.search-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.city-input {
+  flex: 1;
+  min-width: 0;
+  padding: 13px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  outline: none;
+  font-size: 15px;
+}
+
+.city-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+
+/* Search Button */
+.search-button {
+  padding: 13px 18px;
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.search-button:hover {
+  background: #1d4ed8;
+}
+
+.search-button:disabled {
+  background: #93c5fd;
+  cursor: not-allowed;
+}
+
+
+/* Weather Results */
+.weather-result {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e2e8f0;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.weather-city {
+  margin: 0;
+  color: #0f172a;
+  font-size: 26px;
+}
+
+
+/* Weather Icon */
+.weather-icon {
+  margin: 8px 0;
+}
+
+.weather-icon img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+
+/* Temperature and Condition */
+.weather-temperature {
+  margin: 12px 0;
+  color: #2563eb;
+  font-size: 56px;
+  font-weight: bold;
+}
+
+.weather-condition {
+  margin: 0 0 24px;
+  color: #64748b;
+  font-size: 17px;
+  text-transform: capitalize;
+}
+
+
+/* Humidity and Wind Speed Cards */
+.weather-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.weather-detail {
+  padding: 16px 10px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.weather-detail:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.detail-label {
+  margin: 0 0 8px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.detail-value {
+  margin: 0;
+  color: #0f172a;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+/* Loading and Error Messages */
+.loading-message {
+  color: #2563eb;
+  font-size: 14px;
+}
+
+.error-message {
+  padding: 12px;
+  border-radius: 8px;
+  background: #fef2f2;
+  color: #b91c1c;
+  font-size: 14px;
+}
+
+
+/* Weather Results Animation*/
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Responsive Mobile Layout */
+@media (max-width: 480px) {
+  .app {
+    padding: 16px;
+  }
+
+  .weather-container {
+    padding: 24px 18px;
+  }
+
+  .app-title {
+    font-size: 28px;
+  }
+
+  .search-section {
+    gap: 8px;
+  }
+
+  .search-button {
+    padding: 12px;
+  }
+
+  .weather-temperature {
+    font-size: 48px;
+  }
+
+  .weather-detail {
+    padding: 14px 8px;
+  }
+}
+/* Weather-Based Backgrounds */
+
+/* Clear sky during the day */
+.app.weather-01d {
+  background: linear-gradient(135deg, #bfdbfe, #eff6ff, #dbeafe);
+}
+
+/* Clear sky at night */
+.app.weather-01n {
+  background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+}
+
+/* Few clouds */
+.app.weather-02 {
+  background: linear-gradient(135deg, #cbd5e1, #eff6ff, #dbeafe);
+}
+
+/* Scattered and broken clouds */
+.app.weather-03,
+.app.weather-04 {
+  background: linear-gradient(135deg, #94a3b8, #e2e8f0, #cbd5e1);
+}
+
+/* Rain and drizzle */
+.app.weather-09,
+.app.weather-10 {
+  background: linear-gradient(135deg, #64748b, #cbd5e1, #94a3b8);
+}
+
+/* Thunderstorm */
+.app.weather-11 {
+  background: linear-gradient(135deg, #334155, #64748b, #475569);
+}
+
+/* Snow */
+.app.weather-13 {
+  background: linear-gradient(135deg, #e0f2fe, #f8fafc, #bae6fd);
+}
+
+/* Mist, fog and haze */
+.app.weather-50 {
+  background: linear-gradient(135deg, #94a3b8, #e2e8f0, #cbd5e1);
+}
